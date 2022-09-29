@@ -2,15 +2,16 @@
 
 body {
     margin: 0;
+    /*背景に画像ファイルを指定して、画面サイズにあわせて伸縮する*/
     background: #fff url("bg-001.png") center center / cover no-repeat fixed;
 }
-
+/*画面上部のメニュー帯*/
 nav {
     padding: 0; 
     margin: 0;
     color: #fff;
 }
-
+/*メニュー帯の外枠*/
 #menu{
   display: -webkit-box;
   display: -moz-box;
@@ -21,7 +22,7 @@ nav {
   list-style-type: none;
   background-color : rgba(0,0,0,0.3);
 }
-
+/*メニュー帯のリスト表示*/
 #menu li{
   position: relative;
   -webkit-box-flex: 1;
@@ -31,7 +32,7 @@ nav {
   text-align: center;
   border-style: none;
 }
-
+/*メニュー帯のリスト項目表示*/
 #menu li a{
   display: block;
   width: auto;
@@ -43,7 +44,7 @@ nav {
   text-decoration: none;
   text-shadow: 0px -1px 1px rgba(0,0,0,0.7);
 }
-
+/*カーソルが領域にポイントされたときの挙動*/
 #menu li a:hover {
   background: #00f;
 }
