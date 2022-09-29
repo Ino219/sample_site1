@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "shift-jis";
 
 body {
     margin: 0;
@@ -89,16 +89,17 @@ header.type2 img {
   margin:70px 0px;
 }
 
-
+/*コンテンツ内容*/
 article {
     width: 80%;
     margin: 10%;
     background-color: rgba( 20, 20, 50, 0.55 );
     color: #fff;
     text-align: center;
+    /*記述内容を改行タグなしで改行処理が出来る*/
     white-space: pre-wrap;
 }
-
+/*ACCESSのstardustの店舗画像*/
 article img{
    width: 90%;
    margin: 5%;
