@@ -134,6 +134,19 @@ article img{
    margin: 5%;
 }
 
+#box1{
+  background-color: rgba( 20, 20, 50, 0.55 );
+  color:#FFF;
+  margin:5% 15%;
+  /*角の丸み*/
+  border-radius: 5pt;
+  /*外枠を二重線に指定*/
+  border-top: solid 1px;
+  border-left: solid 1px;
+  border-bottom: double;
+  border-right: double;
+}
+
 h1 img {
   width: 100%;
   margin: 10px 0px;
