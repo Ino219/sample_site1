@@ -123,6 +123,11 @@ article {
     /*記述内容を改行タグなしで改行処理が出来る*/
     white-space: pre-wrap;
 }
+#sec_article{
+  width: 80%;
+    margin: 10%;
+    background-color: rgba( 20, 20, 50, 0.55 );
+}
 /*ACCESSのstardustの店舗画像*/
 article img{
    width: 90%;
