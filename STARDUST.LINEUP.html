@@ -5,24 +5,61 @@
 <head>
 <meta charset="shift_jis">
 <meta name="keywords" content="岡山,駅前,ゲームセンター,ゲーセン,ダスト,スターダスト">
-<meta name="discription" content="岡山駅前のゲームセンター"STAR DUST(スターダスト)のホームページ"">
+<meta name="discription" content="岡山駅前のゲームセンター"STAR DUST(スターダスト)のホームページ>
 <title>岡山駅前のゲームセンター"STAR DUST(スターダスト)"</title>
 <link rel="stylesheet" href="STARDUST.TOP.css" type="text/css">
 
 <script type="text/javascript">
-   //var menu = document.getElementById('LU_menu');
+
+  const game_title=[["音ゲー","MUSIC"],["アクション","ACTION"],["格ゲー","FIGHTING"],["麻雀","MAH=JONGG"]];
+
+  function init(){
+    var sec=document.getElementById("sec_article");
+    var element=document.createElement("div");
+      element.id="MUSIC";
+      element.insertAdjacentHTML="hello"
+      sec.appendChild(element);
+
+    alert(element.id);
+    //for(i=0;i>=game_title.length;i++){
+
+     // var element=document.createElement("div");
+     // element.id=game_title[i][1];
+     // element.insertAdjacentHTML="hello"
+     // element.appendChild("sec_article");
+      /*
+      var element2=document.createElement("div");
+      element2.className="LU_menu";
+      element2.onclick=star_click(this.parentElement.id);
+      element.appendChild(element2);
+
+      var main=document.createElement("div");
+      main.className="main";
+      main.insertAdjacentHTML=game_title[i][0];
+      element2.appendChild(main);
+
+      var sub=document.createElement("div");
+      sub.className="sub";
+      sub.insertAdjacentHTML=game_title[i][1];
+      element2.appendChild(sub);
+
+      var hr=document.createElement("hr")
+      hr.after(element2);
+      */
+
+    //}
+  }
+
    //このメソッドはページを再読み込みするためのもの
  function reload_back(){
   location.reload();
  }
- 
 
   function star_click(divid){
     //ドキュメントによるページ遷移
     //location.href="STARDUST.MUSIC.html";
     //クリックした項目の要素名を取得
-    var parent=document.getElementById(divid.id);
-    var temp=document.getElementById(parent.id);
+    var temp=document.getElementById(divid);
     //以下の要素を全て隠す
     //document.getElementById("sec_article").style.visibility="hidden";
     //以下の要素を削除する
@@ -31,7 +68,6 @@
     //document.getElementById(parent.id).style.visibility="visible";
     //tempの後に要素を挿入する
     document.getElementById("temp1").after(temp);
-    //document.getElementById("sec_article").style.visibility="visible";
     //ドキュメントの内容(音ゲー)を書き換える
     //document.getElementById("LU_menu").innerHTML="sample";
   }
@@ -77,15 +113,7 @@
 
 <div id="sec_article">
 
-<div id="music" onclick="star_click(this)">
-  <div class="LU_menu">
-     <div class="main">音ゲー</div>
-     <div class="sub">MUSIC</div>
-   </div>
-   <hr>
-   </div>
-
- <!--
+<!--
   旧雛形デザインのコード
   <h1><a href="STARDUST.MUSIC.html"><img src="music.png"></a></h1>
  <a href="STARDUST.MUSIC.html">
@@ -96,45 +124,65 @@
 </a>
 <hr>-->
 
+<!--
+  旧コード
 <div id="action" onclick="star_click(this)">
   <div class="LU_menu">
    <div class="main">アクション</div>
    <div class="sub">ACTION</div>
  </div>
  <hr>
- </div>
+ </div>-->
 
-<div id="fighting" onclick="star_click(this)">
-  <div class="LU_menu">
+
+<div id="MUSIC">
+    <div class="LU_menu" onclick="star_click(this.parentElement.id)">
+     <div class="main">音ゲー</div>
+     <div class="sub">MUSIC</div>
+   </div>
+   <hr>
+  </div>
+
+<div id="ACTION">
+  <div class="LU_menu" onclick="star_click(this.parentElement.id)">
+   <div class="main">アクション</div>
+   <div class="sub">ACTION</div>
+ </div>
+ <hr>
+</div>
+
+ <div id="FIGHTING">
+  <div class="LU_menu" onclick="star_click(this.parentElement.id)">
    <div class="main">格ゲー</div>
    <div class="sub">FIGHTING</div>
  </div>
  <hr>
- </div>
+</div>
 
- <div id="mah-jongg" onclick="star_click(this)">
-  <div class="LU_menu">
+<div id="MAH=JONGG">
+  <div class="LU_menu" onclick="star_click(this.parentElement.id)">
    <div class="main">麻雀</div>
-   <div class="sub">MAH-JONGG</div>
+   <div class="sub">MAH=JONGG</div>
  </div>
  <hr>
- </div>
+</div>
 
- <div id="tcg" onclick="star_click(this)">
-  <div class="LU_menu">
+<div id="TCG">
+  <div class="LU_menu" onclick="star_click(this.parentElement.id)">
    <div class="main">カードゲーム</div>
    <div class="sub">TCG</div>
  </div>
  <hr>
- </div>
+</div>
 
- <div id="etc" onclick="star_click(this)">
-  <div class="LU_menu">
+<div id="ETC">
+  <div class="LU_menu" onclick="star_click(this.parentElement.id)">
    <div class="main">その他</div>
-   <div class="sub">ETC's</div>
+   <div class="sub">ETC</div>
  </div>
  <hr>
- </div>
+</div>
+
 
 </div>
 </body>

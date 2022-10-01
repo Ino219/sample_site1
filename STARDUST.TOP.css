@@ -135,6 +135,7 @@ article {
     white-space: pre-wrap;
 }
 #sec_article{
+  list-style-type: none;
   width: 80%;
     margin: 10%;
     background-color: rgba( 20, 20, 50, 0.55 );
