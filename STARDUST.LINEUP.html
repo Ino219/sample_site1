@@ -8,6 +8,33 @@
 <meta name="discription" content="岡山駅前のゲームセンター"STAR DUST(スターダスト)のホームページ"">
 <title>岡山駅前のゲームセンター"STAR DUST(スターダスト)"</title>
 <link rel="stylesheet" href="STARDUST.TOP.css" type="text/css">
+
+<script type="text/javascript">
+   //var menu = document.getElementById('LU_menu');
+ function reload_back(){
+  location.reload();
+ }
+ 
+
+  function star_click(divid){
+    //ドキュメントによるページ遷移
+    //location.href="STARDUST.MUSIC.html";
+    //クリックした項目の要素名を取得
+    var parent=document.getElementById(divid.id);
+    var temp=document.getElementById(parent.id);
+    //以下の要素を全て隠す
+    //document.getElementById("sec_article").style.visibility="hidden";
+    document.getElementById("sec_article").remove();
+    //選択した要素を可視化する
+    //document.getElementById(parent.id).style.visibility="visible";
+    //tempの後に要素を挿入する
+    document.getElementById("temp1").after(temp);
+    //document.getElementById("sec_article").style.visibility="visible";
+    //ドキュメントの内容(音ゲー)を書き換える
+    //document.getElementById("LU_menu").innerHTML="sample";
+  }
+</script>
+
 </head>
 
 <body>
@@ -36,70 +63,76 @@
 </ul>
 </nav>
 
-<div id="headline">
+<div id="headline" onclick="reload_back()">
   <div id="main">ラインナップ</div>
   <div id="sub">LINE UP</div>
 </div>
+<!--このtemp1は要素を挿入するための目印-->
+<div id="temp1">
 <hr>
+</div>
 
-<!--<header>
-<img src="lineup.png">
-</header>-->
+
 <div id="sec_article">
 
- <!--<h1><a href="STARDUST.MUSIC.html"><img src="music.png"></a></h1>-->
+<div id="music" onclick="star_click(this)">
+  <div id="LU_menu">
+     <div id="main">音ゲー</div>
+     <div id="sub">MUSIC</div>
+   </div>
+   <hr>
+   </div>
+
+ <!--
+  旧雛形デザインのコード
+  <h1><a href="STARDUST.MUSIC.html"><img src="music.png"></a></h1>
  <a href="STARDUST.MUSIC.html">
  <div id="headline">
   <div id="main">音ゲー</div>
   <div id="sub">MUSIC</div>
 </div>
 </a>
-<hr>
- 
- <!--<h1><a href="STARDUST.ACTION.html"><img src="action.png"></a></h1>-->
- <a href="STARDUST.ACTION.html">
- <div id="headline">
-  <div id="main">アクション</div>
-  <div id="sub">ACTION</div>
-</div>
-</a>
-<hr>
+<hr>-->
 
- <!--<h1><a href="STARDUST.FIGHTING.html"><img src="fighting.png"></a></h1>-->
- <a href="STARDUST.FIGHTING.html">
- <div id="headline">
-  <div id="main">格ゲー</div>
-  <div id="sub">FIGHTING</div>
-</div>
-</a>
-<hr>
+<div id="action" onclick="star_click(this)">
+  <div id="LU_menu">
+   <div id="main">アクション</div>
+   <div id="sub">ACTION</div>
+ </div>
+ <hr>
+ </div>
 
- <!--<h1><a href="STARDUST.MAH-JONGG.html"><img src="mah-jongg.png"></a></h1>-->
- <a href="STARDUST.MAH-JONGG.html">
- <div id="headline">
-  <div id="main">麻雀</div>
-  <div id="sub">MAH-JONGG</div>
-</div>
-</a>
-<hr>
- 
- <!--<h1><a href="STARDUST.TCG.html"><img src="TCG.png"></a></h1>-->
- <a href="STARDUST.TCG.html">
- <div id="headline">
-  <div id="main">カードゲーム</div>
-  <div id="sub">TCG</div>
-</div>
-</a>
-<hr>
+<div id="fighting" onclick="star_click(this)">
+  <div id="LU_menu">
+   <div id="main">格ゲー</div>
+   <div id="sub">FIGHTING</div>
+ </div>
+ <hr>
+ </div>
 
- <!--<h1><a href="STARDUST.ETC.html"><img src="ETC.png"></a></h1>-->
- <a href="STARDUST.ETC.html">
- <div id="headline">
-  <div id="main">その他</div>
-  <div id="sub">ETC's</div>
-</div>
-</a>
-<hr>
+ <div id="mah-jongg" onclick="star_click(this)">
+  <div id="LU_menu">
+   <div id="main">麻雀</div>
+   <div id="sub">MAH-JONGG</div>
+ </div>
+ <hr>
+ </div>
+
+ <div id="tcg" onclick="star_click(this)">
+  <div id="LU_menu">
+   <div id="main">カードゲーム</div>
+   <div id="sub">TCG</div>
+ </div>
+ <hr>
+ </div>
+
+ <div id="etc" onclick="star_click(this)">
+  <div id="LU_menu">
+   <div id="main">その他</div>
+   <div id="sub">ETC's</div>
+ </div>
+ <hr>
+ </div>
 
 </div>
 </body>
