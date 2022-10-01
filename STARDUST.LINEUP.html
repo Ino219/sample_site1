@@ -11,6 +11,7 @@
 
 <script type="text/javascript">
    //var menu = document.getElementById('LU_menu');
+   //このメソッドはページを再読み込みするためのもの
  function reload_back(){
   location.reload();
  }
@@ -24,6 +25,7 @@
     var temp=document.getElementById(parent.id);
     //以下の要素を全て隠す
     //document.getElementById("sec_article").style.visibility="hidden";
+    //以下の要素を削除する
     document.getElementById("sec_article").remove();
     //選択した要素を可視化する
     //document.getElementById(parent.id).style.visibility="visible";
@@ -63,9 +65,9 @@
 </ul>
 </nav>
 
-<div id="headline" onclick="reload_back()">
-  <div id="main">ラインナップ</div>
-  <div id="sub">LINE UP</div>
+<div class="headline" onclick="reload_back()">
+  <div class="main">ラインナップ</div>
+  <div class="sub">LINE UP</div>
 </div>
 <!--このtemp1は要素を挿入するための目印-->
 <div id="temp1">
@@ -76,9 +78,9 @@
 <div id="sec_article">
 
 <div id="music" onclick="star_click(this)">
-  <div id="LU_menu">
-     <div id="main">音ゲー</div>
-     <div id="sub">MUSIC</div>
+  <div class="LU_menu">
+     <div class="main">音ゲー</div>
+     <div class="sub">MUSIC</div>
    </div>
    <hr>
    </div>
@@ -95,41 +97,41 @@
 <hr>-->
 
 <div id="action" onclick="star_click(this)">
-  <div id="LU_menu">
-   <div id="main">アクション</div>
-   <div id="sub">ACTION</div>
+  <div class="LU_menu">
+   <div class="main">アクション</div>
+   <div class="sub">ACTION</div>
  </div>
  <hr>
  </div>
 
 <div id="fighting" onclick="star_click(this)">
-  <div id="LU_menu">
-   <div id="main">格ゲー</div>
-   <div id="sub">FIGHTING</div>
+  <div class="LU_menu">
+   <div class="main">格ゲー</div>
+   <div class="sub">FIGHTING</div>
  </div>
  <hr>
  </div>
 
  <div id="mah-jongg" onclick="star_click(this)">
-  <div id="LU_menu">
-   <div id="main">麻雀</div>
-   <div id="sub">MAH-JONGG</div>
+  <div class="LU_menu">
+   <div class="main">麻雀</div>
+   <div class="sub">MAH-JONGG</div>
  </div>
  <hr>
  </div>
 
  <div id="tcg" onclick="star_click(this)">
-  <div id="LU_menu">
-   <div id="main">カードゲーム</div>
-   <div id="sub">TCG</div>
+  <div class="LU_menu">
+   <div class="main">カードゲーム</div>
+   <div class="sub">TCG</div>
  </div>
  <hr>
  </div>
 
  <div id="etc" onclick="star_click(this)">
-  <div id="LU_menu">
-   <div id="main">その他</div>
-   <div id="sub">ETC's</div>
+  <div class="LU_menu">
+   <div class="main">その他</div>
+   <div class="sub">ETC's</div>
  </div>
  <hr>
  </div>

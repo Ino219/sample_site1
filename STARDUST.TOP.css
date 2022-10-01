@@ -73,7 +73,7 @@ nav {
   height: 45px;
 }
 /*ページの見出しの表示*/
-#headline{
+div.headline{
   display: -webkit-box;
   display: -moz-box;
   margin: 5% 15% 0% 15%;
@@ -83,20 +83,20 @@ nav {
   border-top: double gray 10px;
 }
 /*見出しのメイン表示*/
-#main{
+div.main{
   margin-right: auto;
   font-family: serif;
   font-size: 40pt;
 }
 /*見出しのサブ表示*/
-#sub{
+div.sub{
   font-size: 20pt;
   margin-top: auto;
   margin-left: auto;
   font-family: serif;
 }
 /*ラインナップのメインサブ両表示のデザイン*/
-#LU_menu{
+div.LU_menu{
   display: -webkit-box;
   display: -moz-box;
   margin: 5% 15% 0% 15%;
@@ -200,7 +200,7 @@ table.explain tr th{
   border-bottom: solid 1px #FFFFFF;
   border-collapse: separate;
 }
-
+/*グーグルマップのデザインスタイル*/
 div.ggmap {
   position: relative;
   padding-bottom: 56.25%;
