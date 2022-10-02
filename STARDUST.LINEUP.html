@@ -35,7 +35,14 @@ const game_title=[["音ゲー","MUSIC"],["アクション","ACTION"],["格ゲー","FIGHTING
   function star_click2(divid){
     for(var i=0;game_title.length;i++){
       if(game_title[i][1]!=divid){
+        //クリックしたメニュー以外の要素を消す
         document.getElementById(game_title[i][1]).remove();
+      }else{
+        //クリックしたメニューと要素が一致したときの処理
+        //当該要素の下に該当する画像を表示する
+        var doc=document.getElementById(game_title[i][1]);
+        var elem1=document.createElement("div");
+        doc.after(elem1);elem1.innerHTML="<header><img src=music_groove.png></header>";
       }
     }
   }
