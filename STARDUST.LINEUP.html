@@ -13,41 +13,157 @@
 
 const game_title=[["音ゲー","MUSIC"],["アクション","ACTION"],["格ゲー","FIGHTING"],["麻雀","MAH-JONGG"],["カードゲーム","TCG"],["その他","ETC"]];
 
+/*
+var game_MUSIC=[
+  {name:"maimai",path:"music_dir/maimai.png",quantity:2,"曲数設定":3,"備考":"四人でプレイする場合に限り、リンクプレイ可能です。STAFFにお声掛けください。"},
+  {name:"GROOVE　COASTER",path:"music_dir/groove.png",quantity:2},
+  {name:"GITADORA",path:"music_dir/drum.png",quantity:1},
+  {name:"REFLEC　BEAT",path:"music_dir/rb.jpg",quantity:1},
+  {name:"太鼓の達人",path:"music_dir/taiko.jpg",quantity:1,"曲数設定":"100円4曲"},
+  {name:"SOUND VOLTEX",path:"music_dir/SDVX.png",quantity:2},
+  {name:"chunithm",path:"music_dir/chuni.png",quantity:2},
+  {name:"beatmania_2dx",path:"music_dir/bm2dx.jpg",quantity:3},
+  {name:"jubeat",path:"music_dir/jubeat.png",quantity:1,"備考":"1台はイヤホン対応です。"},
+  {name:"miku_diva",path:"music_dir/miku.png",quantity:1},
+  {name:"ポップンミュージック",path:"music_dir/popn.png",quantity:1},
+  {name:"LoveLive",path:"music_dir/LL.jpg",quantity:3}];
+  */
+  
+  var maimai=new Map([["name","maimai"],["path","music_dir/maimai.png"],["設置台数",2],["曲数設定",3],["備考","四人でプレイする場合に限り、リンクプレイ可能です。STAFFにお声掛けください。"]]);
+  var groove=new Map([["name","GROOVE　COASTER"],["path","music_dir/groove.png"],["設置台数",2]]);
+  var gitadora=new Map([["name","GITADORA"],["path","music_dir/drum.png"],["設置台数",1]]);
+  var reflec=new Map([["name","REFLEC BEAT"],["path","music_dir/rb.jpg"],["設置台数",1]]);
+  var taiko=new Map([["name","太鼓の達人"],["path","music_dir/taiko.jpg"],["設置台数",1],["曲数設定",4]]);
+  var sound=new Map([["name","SOUND　VOLTEX"],["path","music_dir/SDVX.png"],["設置台数",2]]);
+  var chunithm=new Map([["name","CHUNITHM"],["path","music_dir/chuni.png"],["設置台数",2]]);
+  var beatmania=new Map([["name","beatmania_2dx"],["path","music_dir/bm2dx.jpg"],["設置台数",3],["備考","1台はイヤフォン対応です。"]]);
+  var jubeat=new Map([["name","jubeat"],["path","music_dir/jubeat.png"],["設置台数",1],["備考","イヤフォン対応しています。"]]);
+  var miku=new Map([["name","初音ミク Project DIVA"],["path","music_dir/miku.png"],["設置台数",1]]);
+  var popn=new Map([["name","ポップンミュージック"],["path","music_dir/popn.png"],["設置台数",1]])
+  var lovelive=new Map([["name","LoveLive"],["path","music_dir/LL.jpg"],["設置台数",3]]);
 
+  var game_MUSIC=[maimai,groove,gitadora,reflec,taiko,sound,chunithm,beatmania,jubeat,miku,popn,lovelive];
+
+  //console.log(game_MUSIC[1].get("設置台数"));
+
+  
 //star_click2の旧バージョン関数
-/*function star_click(divid){
+function star_click(divid){
     //ドキュメントによるページ遷移
     //location.href="STARDUST.MUSIC.html";
     //クリックした項目の要素名を取得
     var temp=document.getElementById(divid);
     //以下の要素を全て隠す
-    //document.getElementById("sec_article").style.visibility="hidden";
+    //document.getElementById("sec_article").style.visibility="collapse";
     //以下の要素を削除する
-    document.getElementById("sec_article").remove();
+    var desk=document.getElementById("sec_article");
+    desk.innerHTML.remove;
     //選択した要素を可視化する
-    //document.getElementById(parent.id).style.visibility="visible";
-    //tempの後に要素を挿入する
-    document.getElementById("temp1").after(temp);
+    //temp.style.visibility="visible";
+    //temp1(hr)の後に要素を挿入する
+    //var hr=document.getElementById("temp1");
+    //hr.after(temp);
+    desk.after(temp);
+    /*var ele=[];
+
+        for(let l=0;l<=temp.length;l++){
+          
+          ele[l]=document.createElement("div");
+          sec.appendChild(ele[l]);
+          ele[l].setAttribute("src","<header><img src='"+temp[l].path+"'></header>");
+          ele[l].innerHTML=ele[l].getAttribute("src");
+        }*/
+
+    //var elem1=document.createElement("div");
+    //temp.after(elem1);
+    //elem1.innerHTML="<header><img src=groove.png></header>";
+    //document.getElementById("sam").innerHTML="sample";
+
     //ドキュメントの内容(音ゲー)を書き換える
     //document.getElementById("LU_menu").innerHTML="sample";
-  }*/
+  }
 
   function star_click2(divid){
-    for(var i=0;game_title.length;i++){
-      if(game_title[i][1]!=divid){
+
+    for(var m=0;m<game_title.length;m++){
+      if(game_title[m][1]!=divid){
         //クリックしたメニュー以外の要素を消す
-        document.getElementById(game_title[i][1]).remove();
+        document.getElementById(game_title[m][1]).remove();
       }else{
         //クリックしたメニューと要素が一致したときの処理
         //当該要素の下に該当する画像を表示する
-        var doc=document.getElementById(game_title[i][1]);
-        var elem1=document.createElement("div");
-        doc.after(elem1);elem1.innerHTML="<header><img src=music_groove.png></header>";
+        var doc=document.getElementById(game_title[m][1]);   
+
+        //各ジャンルのゲーム名を羅列した配列名を変数dividから取得する
+        var kind="game_"+divid;
+        //switch構文で置き換える
+        if(kind=="game_MUSIC"){
+          var decide=game_MUSIC;
+        }
+
+        var ele=[];
+
+        for(let n=0;n<decide.length;n++){          
+          ele[n]=document.createElement("div");
+          if(n==0){
+          doc.after(ele[n]);
+          }else{
+            ele[n-1].after(ele[n]);
+          }
+          //decide[n].pathを置き換える
+          ele[n].setAttribute("src","<img src='"+game_MUSIC[n].get("path")+"' class='title'>");
+          ele[n].innerHTML=ele[n].getAttribute("src");
+          //テーブルの作成
+          var tbl=document.createElement("table");
+          tbl.className="explain";
+
+          var keylist=[];
+          var valuelist=[];
+          
+          //変数vで行数を設定する
+          for(var v=0;v<game_MUSIC[n].size;v++){
+          var tr=document.createElement("tr");
+          if(v==1)
+          continue;
+          
+          //変数uが列数の指定
+          for(var u=0;u<2;u++){            
+            var th=document.createElement("th");
+            var text;
+            var num=0;
+
+            if(u==0){
+            game_MUSIC[n].forEach(function(value, key){
+              if(key!="path"){
+                keylist[num]=key;
+                valuelist[num]=value;
+            //console.log(cons[n].size+"回中"+num+"回目で[" + key + ", " + value + "]");
+              }
+            num++;
+            });
+              //1列目の項目指定
+            text=document.createTextNode(keylist[v]);
+            }else{
+              //2列目の項目指定
+            text=document.createTextNode(valuelist[v]);
+            }
+            th.appendChild(text);
+            tr.appendChild(th);
+          }
+          tbl.appendChild(tr);
+          }
+          //要素数を取得
+          //console.log(Object.values(decide[n]));
+          
+          ele[n].appendChild(tbl);
+
+        }
       }
     }
   }
 
   function init(){
+
     var sec=document.getElementById("sec_article");
     
     for(let i=0;i<=game_title.length;i++){
@@ -78,6 +194,8 @@ const game_title=[["音ゲー","MUSIC"],["アクション","ACTION"],["格ゲー","FIGHTING
       var hr=document.createElement("hr")
       element2.after(hr);   
 
+      
+
     }
   }
 
@@ -93,7 +211,8 @@ const game_title=[["音ゲー","MUSIC"],["アクション","ACTION"],["格ゲー","FIGHTING
 
 </head>
 
-<body>
+<!--bodyがロードされたときにinitが読み込まれる-->
+<body onload="init()">
  <nav>
 <ul id="menu">
   <li><a href="index.html">TOP</a></li>
@@ -132,10 +251,6 @@ const game_title=[["音ゲー","MUSIC"],["アクション","ACTION"],["格ゲー","FIGHTING
 
 
 <div id="sec_article">
-
-  <script>
-    init();
-  </script>
 
 <!--
   旧雛形デザインのコード
