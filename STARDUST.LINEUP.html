@@ -3,271 +3,395 @@
 <html lang="ja">
 
 <head>
-<meta charset="shift_jis">
-<meta name="keywords" content="‰ªR,‰w‘O,ƒQ[ƒ€ƒZƒ“ƒ^[,ƒQ[ƒZƒ“,ƒ_ƒXƒg,ƒXƒ^[ƒ_ƒXƒg">
-<meta name="discription" content="‰ªR‰w‘O‚ÌƒQ[ƒ€ƒZƒ“ƒ^["STAR DUST(ƒXƒ^[ƒ_ƒXƒg)‚Ìƒz[ƒ€ƒy[ƒW>
-<title>‰ªR‰w‘O‚ÌƒQ[ƒ€ƒZƒ“ƒ^["STAR DUST(ƒXƒ^[ƒ_ƒXƒg)"</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="å²¡å±±,é§…å‰,ã‚²ãƒ¼ãƒ ã‚»ãƒ³ã‚¿ãƒ¼,ã‚²ãƒ¼ã‚»ãƒ³,ãƒ€ã‚¹ãƒˆ,ã‚¹ã‚¿ãƒ¼ãƒ€ã‚¹ãƒˆ">
+<meta name="discription" content="å²¡å±±é§…å‰ã®ã‚²ãƒ¼ãƒ ã‚»ãƒ³ã‚¿ãƒ¼"STAR DUST(ã‚¹ã‚¿ãƒ¼ãƒ€ã‚¹ãƒˆ)ã®ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸>
+<title>å²¡å±±é§…å‰ã®ã‚²ãƒ¼ãƒ ã‚»ãƒ³ã‚¿ãƒ¼"STAR DUST(ã‚¹ã‚¿ãƒ¼ãƒ€ã‚¹ãƒˆ)"</title>
 <link rel="stylesheet" href="STARDUST.TOP.css" type="text/css">
-
+<script
+  src="https://code.jquery.com/jquery-3.6.1.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"></script>
 <script type="text/javascript">
 
-const game_title=[["‰¹ƒQ[","MUSIC"],["ƒAƒNƒVƒ‡ƒ“","ACTION"],["ŠiƒQ[","FIGHTING"],["–ƒ","MAH-JONGG"],["ƒJ[ƒhƒQ[ƒ€","TCG"],["‚»‚Ì‘¼","ETC"]];
+//const game_title=[["éŸ³ã‚²ãƒ¼","MUSIC"],["ã‚¢ã‚¯ã‚·ãƒ§ãƒ³","ACTION"],["æ ¼ã‚²ãƒ¼","FIGHTING"],["éº»é›€","MAHJONGG"],["ã‚«ãƒ¼ãƒ‰ã‚²ãƒ¼ãƒ ","TCG"],["ãã®ä»–","ETC"]];
 
-/*
-var game_MUSIC=[
-  {name:"maimai",path:"music_dir/maimai.png",quantity:2,"‹È”İ’è":3,"”õl":"ll‚ÅƒvƒŒƒC‚·‚éê‡‚ÉŒÀ‚èAƒŠƒ“ƒNƒvƒŒƒC‰Â”\‚Å‚·BSTAFF‚É‚¨ºŠ|‚¯‚­‚¾‚³‚¢B"},
-  {name:"GROOVE@COASTER",path:"music_dir/groove.png",quantity:2},
-  {name:"GITADORA",path:"music_dir/drum.png",quantity:1},
-  {name:"REFLEC@BEAT",path:"music_dir/rb.jpg",quantity:1},
-  {name:"‘¾ŒÛ‚Ì’Bl",path:"music_dir/taiko.jpg",quantity:1,"‹È”İ’è":"100‰~4‹È"},
-  {name:"SOUND VOLTEX",path:"music_dir/SDVX.png",quantity:2},
-  {name:"chunithm",path:"music_dir/chuni.png",quantity:2},
-  {name:"beatmania_2dx",path:"music_dir/bm2dx.jpg",quantity:3},
-  {name:"jubeat",path:"music_dir/jubeat.png",quantity:1,"”õl":"1‘ä‚ÍƒCƒ„ƒzƒ“‘Î‰‚Å‚·B"},
-  {name:"miku_diva",path:"music_dir/miku.png",quantity:1},
-  {name:"ƒ|ƒbƒvƒ“ƒ~ƒ…[ƒWƒbƒN",path:"music_dir/popn.png",quantity:1},
-  {name:"LoveLive",path:"music_dir/LL.jpg",quantity:3}];
-  */
-  
-  var maimai=new Map([["name","maimai"],["path","music_dir/maimai.png"],["İ’u‘ä”",2],["‹È”İ’è",3],["”õl","ll‚ÅƒvƒŒƒC‚·‚éê‡‚ÉŒÀ‚èAƒŠƒ“ƒNƒvƒŒƒC‰Â”\‚Å‚·BSTAFF‚É‚¨ºŠ|‚¯‚­‚¾‚³‚¢B"]]);
-  var groove=new Map([["name","GROOVE@COASTER"],["path","music_dir/groove.png"],["İ’u‘ä”",2]]);
-  var gitadora=new Map([["name","GITADORA"],["path","music_dir/drum.png"],["İ’u‘ä”",1]]);
-  var reflec=new Map([["name","REFLEC BEAT"],["path","music_dir/rb.jpg"],["İ’u‘ä”",1]]);
-  var taiko=new Map([["name","‘¾ŒÛ‚Ì’Bl"],["path","music_dir/taiko.jpg"],["İ’u‘ä”",1],["‹È”İ’è",4]]);
-  var sound=new Map([["name","SOUND@VOLTEX"],["path","music_dir/SDVX.png"],["İ’u‘ä”",2]]);
-  var chunithm=new Map([["name","CHUNITHM"],["path","music_dir/chuni.png"],["İ’u‘ä”",2]]);
-  var beatmania=new Map([["name","beatmania_2dx"],["path","music_dir/bm2dx.jpg"],["İ’u‘ä”",3],["”õl","1‘ä‚ÍƒCƒ„ƒtƒHƒ“‘Î‰‚Å‚·B"]]);
-  var jubeat=new Map([["name","jubeat"],["path","music_dir/jubeat.png"],["İ’u‘ä”",1],["”õl","ƒCƒ„ƒtƒHƒ“‘Î‰‚µ‚Ä‚¢‚Ü‚·B"]]);
-  var miku=new Map([["name","‰‰¹ƒ~ƒN Project DIVA"],["path","music_dir/miku.png"],["İ’u‘ä”",1]]);
-  var popn=new Map([["name","ƒ|ƒbƒvƒ“ƒ~ƒ…[ƒWƒbƒN"],["path","music_dir/popn.png"],["İ’u‘ä”",1]])
-  var lovelive=new Map([["name","LoveLive"],["path","music_dir/LL.jpg"],["İ’u‘ä”",3]]);
+  var maimai=new Map([["name","maimai"],["path","ready.png"],["è¨­ç½®å°æ•°",2],["æ›²æ•°è¨­å®š",3],["å‚™è€ƒ","å››äººã§ãƒ—ãƒ¬ã‚¤ã™ã‚‹å ´åˆã«é™ã‚Šã€ãƒªãƒ³ã‚¯ãƒ—ãƒ¬ã‚¤å¯èƒ½ã§ã™ã€‚\nSTAFFã¾ã§ãŠå£°æ›ã‘ãã ã•ã„ã€‚"]]);
+  var groove=new Map([["name","GROOVEã€€COASTER"],["path","ready.png"],["è¨­ç½®å°æ•°",2]]);
+  var gitadora=new Map([["name","GITADORA"],["path","ready.png"],["è¨­ç½®å°æ•°",1]]);
+  var reflec=new Map([["name","REFLEC BEAT"],["path","ready.png"],["è¨­ç½®å°æ•°",1]]);
+  var taiko=new Map([["name","å¤ªé¼“ã®é”äºº"],["path","ready.png"],["è¨­ç½®å°æ•°",1],["æ›²æ•°è¨­å®š",4]]);
+  var sound=new Map([["name","SOUNDã€€VOLTEX"],["path","ready.png"],["è¨­ç½®å°æ•°",2]]);
+  var chunithm=new Map([["name","CHUNITHM"],["path","ready.png"],["è¨­ç½®å°æ•°",2]]);
+  var beatmania=new Map([["name","beatmania_2dx"],["path","ready.png"],["è¨­ç½®å°æ•°",3],["å‚™è€ƒ","1å°ã¯ã‚¤ãƒ¤ãƒ•ã‚©ãƒ³å¯¾å¿œã§ã™ã€‚"]]);
+  var jubeat=new Map([["name","jubeat"],["path","ready.png"],["è¨­ç½®å°æ•°",1],["å‚™è€ƒ","ã‚¤ãƒ¤ãƒ•ã‚©ãƒ³å¯¾å¿œã—ã¦ã„ã¾ã™ã€‚"]]);
+  var miku=new Map([["name","åˆéŸ³ãƒŸã‚¯ Project DIVA"],["path","ready.png"],["è¨­ç½®å°æ•°",1]]);
+  var popn=new Map([["name","ãƒãƒƒãƒ—ãƒ³ãƒŸãƒ¥ãƒ¼ã‚¸ãƒƒã‚¯"],["path","ready.png"],["è¨­ç½®å°æ•°",1]])
+  var lovelive=new Map([["name","ãƒ©ãƒ–ãƒ©ã‚¤ãƒ–! ã‚¹ã‚¯ãƒ¼ãƒ«ã‚¢ã‚¤ãƒ‰ãƒ«ãƒ•ã‚§ã‚¹ãƒ†ã‚£ãƒãƒ«"],["path","ready.png"],["è¨­ç½®å°æ•°",3]]);
 
   var game_MUSIC=[maimai,groove,gitadora,reflec,taiko,sound,chunithm,beatmania,jubeat,miku,popn,lovelive];
 
-  //console.log(game_MUSIC[1].get("İ’u‘ä”"));
+  var gundam=new Map([["name","æ©Ÿå‹•æˆ¦å£«ã‚¬ãƒ³ãƒ€ãƒ  EXTREME VS"],["path","ready.png"],["è¨­ç½®å°æ•°","ã‚»ãƒ³ã‚¿ãƒ¼1å°&ã‚µãƒ†ãƒ©ã‚¤ãƒˆ6å°"],["ãƒ©ã‚¤ãƒ³è¨­å®š","ã‚½ãƒ­å‡ºæ’ƒorãƒãƒ¼ãƒ å‡ºæ’ƒ + CPUæˆ¦å„ªå…ˆã€‚\n22:00ã‹ã‚‰å››äººä»¥ä¸Šã§åº—å†…å¯¾æˆ¦ã‚’å—ã‘ä»˜ã‘ã¦ã„ã¾ã™"]]);
+  var dragon=new Map([["name","ãƒ‰ãƒ©ã‚´ãƒ³ãƒœãƒ¼ãƒ« ZENKAI BATTLE"],["path","ready.png"],["è¨­ç½®å°æ•°",4]]);
+  var wonder=new Map([["name","Wonderland Wars"],["path","ready.png"],["è¨­ç½®å°æ•°","ã‚¿ãƒ¼ãƒŸãƒŠãƒ«1å°&ã‚µãƒ†ãƒ©ã‚¤ãƒˆ5å°"]]);
+  var dissidia=new Map([["name","DISSIDIA FINAL FANTASY"],["path","ready.png"],["è¨­ç½®å°æ•°",3]]);
+
+  var game_ACTION=[gundam,dragon,wonder,dissidia];
+
+  var nesica=new Map([["name","NESiCA LIVE"],["path","ready.png"],["è¨­ç½®å°æ•°","2ã‚»ãƒƒãƒˆ"],["åéŒ²ã‚¿ã‚¤ãƒˆãƒ«","BLAZEBLUE CENTRALFICTION ,\nãƒšãƒ«ã‚½ãƒŠ4 ã‚¸ãƒ»ã‚¢ãƒ«ãƒ†ã‚£ãƒãƒƒã‚¯ã‚¹ ã‚¦ãƒ«ãƒˆãƒ©ã‚¹ãƒ¼ãƒ—ãƒ¬ãƒƒã‚¯ã‚¹ãƒ›ãƒ¼ãƒ«ãƒ‰ ,\nULTRA STREET FIGHTER â…£ãªã©â€¦"]]);
+  var allnet=new Map([["name","ALL.NET P-ras MULTI"],["path","ready.png"],["è¨­ç½®å°æ•°","2ã‚»ãƒƒãƒˆ"],["åéŒ²ã‚¿ã‚¤ãƒˆãƒ«","GUILTY GEAR Xrd -REVELATOR- ,\nDENGEKI BUNKO FC -IGNITON- ,\nDEAD OR ALIVE 5 Ultimate :arcade ãªã©â€¦"]]);
+  var tekken=new Map([["name","é‰„æ‹³"],["path","ready.png"],["è¨­ç½®å°æ•°",2]]);
+
+  var game_FIGHTING=[nesica,allnet,tekken];
+
+  var fightclub=new Map([["name","éº»é›€æ ¼é—˜å€¶æ¥½éƒ¨"],["path","ready.png"],["è¨­ç½®å°æ•°",6]]);
+  var mj=new Map([["name","MJ"],["path","ready.png"],["è¨­ç½®å°æ•°","ã‚»ãƒ³ã‚¿ãƒ¼1å°&ã‚µãƒ†ãƒ©ã‚¤ãƒˆ3å°"]]);
+
+  var game_MAHJONGG=[fightclub,mj];
+
+  var sangokushi=new Map([["name","ä¸‰å›½å¿—å¤§æˆ¦"],["path","ready.png"],["è¨­ç½®å°æ•°","ã‚»ãƒ³ã‚¿ãƒ¼1å°&ã‚µãƒ†ãƒ©ã‚¤ãƒˆ4å°"],["äºˆç´„è¨­å®š","é †ç•ªäºˆç´„è¨­å®šã§ç¨¼åƒã—ã¦ã„ã¾ã™ã€‚"]]);
+  var lov=new Map([["name","LORD of VERMILLION"],["path","ready.png"],["è¨­ç½®å°æ•°",2],["è¨­å®š","äºŒå°ã¨ã‚‚ã‚«ãƒ¼ãƒ‰æ’å‡ºã®åˆ‡ã‚Šæ›¿ãˆå¯èƒ½ã§ã™ã€‚"]]);
+  var coj=new Map([["name","CORD OF JOKER"],["path","ready.png"],["è¨­ç½®å°æ•°","ã‚»ãƒ³ã‚¿ãƒ¼1å°&ã‚µãƒ†ãƒ©ã‚¤ãƒˆ4å°"]]);
+  var kancolle=new Map([["name","è‰¦ã“ã‚Œ Arcade"],["path","ready.png"],["è¨­ç½®å°æ•°",2],["è¨­å®š","ä¸€å°ã¯äº¤æ›¿å°(GPè³¼å…¥åˆ¶é™1200GP)ã§ã€ä¸€å°ã¯ç„¡åˆ¶é™å°ã§ã™ã€‚"]]);
+
+  var game_TCG=[sangokushi,lov,coj,kancolle];
+
+  var bb=new Map([["name","BORDER BREAK"],["path","ready.png"],["è¨­ç½®å°æ•°",4]]);
+  var we=new Map([["name","Winning Eleven"],["path","ready.png"],["è¨­ç½®å°æ•°",2]]);
+  var qma=new Map([["name","ã‚¯ã‚¤ã‚ºãƒã‚¸ãƒƒã‚¯ã‚¢ã‚«ãƒ‡ãƒŸãƒ¼"],["path","ready.png"],["è¨­ç½®å°æ•°","ã‚»ãƒ³ã‚¿ãƒ¼1å°&ã‚µãƒ†ãƒ©ã‚¤ãƒˆ2å°"]]);
+  var torotte=new Map([["name","ãƒˆãƒ­ãƒƒãƒ†"],["path","ready.png"],["è¨­ç½®å°æ•°",1]]);
+
+  var game_ETC=[bb,we,qma,torotte];
+
+  var music=new Map([["main","éŸ³ã‚²ãƒ¼"],["sub","MUSIC"],["array",game_MUSIC]]);
+  var action=new Map([["main","ã‚¢ã‚¯ã‚·ãƒ§ãƒ³"],["sub","ACTION"],["array",game_ACTION]]);
+  var fighting=new Map([["main","æ ¼ã‚²ãƒ¼"],["sub","FIGHTING"],["array",game_FIGHTING]]);
+  var mahjongg=new Map([["main","éº»é›€"],["sub","MAHJONGG"],["array",game_MAHJONGG]]);
+  var tcg=new Map([["main","ã‚«ãƒ¼ãƒ‰ã‚²ãƒ¼ãƒ "],["sub","TCG"],["array",game_TCG]]);
+  var etc=new Map([["main","ãã®ä»–"],["sub","ETC"],["array",game_ETC]]);
+
+  var game_title=[music,action,fighting,mahjongg,tcg,etc];
+
+/*  var schedule=new Map([["name","SCHEDULE"],["adress","STARDUST.NEW.html"]]);
+  var lineup=new Map([["name","LINE UP"],["adress","STARDUST.LINEUP"]]);
+  var p_schedule=new Map([["name","SCHEDULE"],["adress","STARDUST.SCHEDULE.html"]]);
+  var p_new=new Map([["name","WHAT'S NEW"],["adress","STARDUST.NEW.html"]]);
+
+  var game_sub=[schedule,lineup];
+  var prize_sub=[p_schedule,p_new];
+
+  var tops=new Map([["name","TOP"],["adress","index.html"],["sub","false"]]);
+  var access=new Map([["name","ACCESS"],["adress","STARDUST.ACCESS.html"],["sub","false"]]);
+  var game=new Map([["name","GAME"],["adress","#"],["sub","true"],["sub_menu",game_sub]]);
+  var prize=new Map([["name","PRIZE"],["adress","#"],["sub","true"],["sub_menu",prize_sub]]);
+  var twitter=new Map([["name","TWITTER"],["adress","#"],["sub","false"]]);
+
+  var menu=[tops,access,game,prize,twitter];*/
 
   
-//star_click2‚Ì‹Œƒo[ƒWƒ‡ƒ“ŠÖ”
-function star_click(divid){
-    //ƒhƒLƒ…ƒƒ“ƒg‚É‚æ‚éƒy[ƒW‘JˆÚ
-    //location.href="STARDUST.MUSIC.html";
-    //ƒNƒŠƒbƒN‚µ‚½€–Ú‚Ì—v‘f–¼‚ğæ“¾
-    var temp=document.getElementById(divid);
-    //ˆÈ‰º‚Ì—v‘f‚ğ‘S‚Ä‰B‚·
-    //document.getElementById("sec_article").style.visibility="collapse";
-    //ˆÈ‰º‚Ì—v‘f‚ğíœ‚·‚é
-    var desk=document.getElementById("sec_article");
-    desk.innerHTML.remove;
-    //‘I‘ğ‚µ‚½—v‘f‚ğ‰Â‹‰»‚·‚é
-    //temp.style.visibility="visible";
-    //temp1(hr)‚ÌŒã‚É—v‘f‚ğ‘}“ü‚·‚é
-    //var hr=document.getElementById("temp1");
-    //hr.after(temp);
-    desk.after(temp);
-    /*var ele=[];
 
-        for(let l=0;l<=temp.length;l++){
-          
-          ele[l]=document.createElement("div");
-          sec.appendChild(ele[l]);
-          ele[l].setAttribute("src","<header><img src='"+temp[l].path+"'></header>");
-          ele[l].innerHTML=ele[l].getAttribute("src");
-        }*/
-
-    //var elem1=document.createElement("div");
-    //temp.after(elem1);
-    //elem1.innerHTML="<header><img src=groove.png></header>";
-    //document.getElementById("sam").innerHTML="sample";
-
-    //ƒhƒLƒ…ƒƒ“ƒg‚Ì“à—e(‰¹ƒQ[)‚ğ‘‚«Š·‚¦‚é
-    //document.getElementById("LU_menu").innerHTML="sample";
-  }
-
-  function star_click2(divid){
+  /*jsæ—§ã‚³ãƒ¼ãƒ‰
+  function star_click(divid){
 
     for(var m=0;m<game_title.length;m++){
       if(game_title[m][1]!=divid){
-        //ƒNƒŠƒbƒN‚µ‚½ƒƒjƒ…[ˆÈŠO‚Ì—v‘f‚ğÁ‚·
+        //ã‚¯ãƒªãƒƒã‚¯ã—ãŸãƒ¡ãƒ‹ãƒ¥ãƒ¼ä»¥å¤–ã®è¦ç´ ã‚’æ¶ˆã™
         document.getElementById(game_title[m][1]).remove();
       }else{
-        //ƒNƒŠƒbƒN‚µ‚½ƒƒjƒ…[‚Æ—v‘f‚ªˆê’v‚µ‚½‚Æ‚«‚Ìˆ—
-        //“–ŠY—v‘f‚Ì‰º‚ÉŠY“–‚·‚é‰æ‘œ‚ğ•\¦‚·‚é
+        //ã‚¯ãƒªãƒƒã‚¯ã—ãŸãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¨è¦ç´ ãŒä¸€è‡´ã—ãŸã¨ãã®å‡¦ç†
+        //å½“è©²è¦ç´ ã®ä¸‹ã«è©²å½“ã™ã‚‹ç”»åƒã‚’è¡¨ç¤ºã™ã‚‹
         var doc=document.getElementById(game_title[m][1]);   
 
-        //ŠeƒWƒƒƒ“ƒ‹‚ÌƒQ[ƒ€–¼‚ğ—…—ñ‚µ‚½”z—ñ–¼‚ğ•Ï”divid‚©‚çæ“¾‚·‚é
-        var kind="game_"+divid;
-        //switch\•¶‚Å’u‚«Š·‚¦‚é
-        if(kind=="game_MUSIC"){
-          var decide=game_MUSIC;
+        //å„ã‚¸ãƒ£ãƒ³ãƒ«ã®ã‚²ãƒ¼ãƒ åã‚’ç¾…åˆ—ã—ãŸé…åˆ—åã‚’å¤‰æ•°dividã‹ã‚‰å–å¾—ã™ã‚‹
+        var decide=category_select(divid);
+
+        //decideã¯å„ã‚«ãƒ†ã‚´ãƒªã®ã‚²ãƒ¼ãƒ ã‚¿ã‚¤ãƒˆãƒ«ãƒªã‚¹ãƒˆ
+        item_display(decide,doc);
+        
+      }
+    }
+  }
+  //ä¸Šæ‰‹ãå‹•ã‹ãªã‹ã£ãŸjqã‚³ãƒ¼ãƒ‰
+  function star_click(order){
+    var divid=game_title[order].get("sub");
+    $(function(){
+      var divid=game_title[order].get("sub");
+      $("#sec_article>div").not("#"+divid).remove();
+      var doc=$("#"+divid);
+      item_display(game_title[order].get("array"),doc);
+    })*/
+
+  //æ—§ã‚³ãƒ¼ãƒ‰
+  /*for(var m=0;m<game_title.length;m++){
+    if(game_title[m].get("sub")!=divid){
+      //ã‚¯ãƒªãƒƒã‚¯ã—ãŸãƒ¡ãƒ‹ãƒ¥ãƒ¼ä»¥å¤–ã®è¦ç´ ã‚’æ¶ˆã™
+      document.getElementById(game_title[m].get("sub")).remove();
+    }else{
+      //ã‚¯ãƒªãƒƒã‚¯ã—ãŸãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¨è¦ç´ ãŒä¸€è‡´ã—ãŸã¨ãã®å‡¦ç†
+      //å½“è©²è¦ç´ ã®ä¸‹ã«è©²å½“ã™ã‚‹ç”»åƒã‚’è¡¨ç¤ºã™ã‚‹
+      var doc=document.getElementById(game_title[m].get("sub"));   
+
+      item_display(game_title[order].get("array"),doc);    
+  }
+}
+}*/
+
+  //ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸè¦ç´ ã‹ã‚‰åˆè‡´ã—ãŸé…åˆ—ã‚’é¸æŠã—ã¦è¿”ã™ãƒ¡ã‚½ãƒƒãƒ‰
+  /*function category_select(divid){
+    var beyond=[];
+    var kind="game_"+divid;
+        switch(kind){
+          case "game_MUSIC":beyond=game_MUSIC;
+          break;
+          case "game_ACTION":beyond=game_ACTION;
+          break;
+          case "game_FIGHTING":beyond=game_FIGHTING;
+          break;
+          case "game_MAHJONGG":beyond=game_MAHJONGG;
+          break;
+          case "game_TCG":beyond=game_TCG;
+          break;
+          case "game_ETC":beyond=game_ETC;
+          break;
         }
+        return beyond;
+  }*/
 
-        var ele=[];
+  //å„é …ç›®ã®ç”»é¢æ§‹æˆã‚’ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+  function item_display(array,doc){
+    var ele=[];
 
-        for(let n=0;n<decide.length;n++){          
+    $.each(array,function(index,value){
+      ele[index]=$("<div><img class='title'></img></div>");
+      if(index==0){
+        doc.after(ele[index]);
+      }else{
+        ele[index-1].after(ele[index]);
+      }
+      ele[index].find("img.title").attr("src",array[index].get("path"));
+      var tb=create_table(array,index);
+      ele[index].append(tb);
+    })}
+
+    /*jsæ—§ã‚³ãƒ¼ãƒ‰
+    for(let n=0;n<array.length;n++){          
           ele[n]=document.createElement("div");
           if(n==0){
           doc.after(ele[n]);
           }else{
             ele[n-1].after(ele[n]);
           }
-          //decide[n].path‚ğ’u‚«Š·‚¦‚é
-          ele[n].setAttribute("src","<img src='"+game_MUSIC[n].get("path")+"' class='title'>");
+          ele[n].setAttribute("src","<img src='"+array[n].get("path")+"' class='title'>");
           ele[n].innerHTML=ele[n].getAttribute("src");
-          //ƒe[ƒuƒ‹‚Ìì¬
-          var tbl=document.createElement("table");
+
+          var tb=create_table(array,n);
+
+          ele[n].appendChild(tb);
+        }
+  }*/
+  
+  //ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+  function create_table(array,n){
+    //ãƒ†ãƒ¼ãƒ–ãƒ«ã®ä½œæˆ
+    var tbl=document.createElement("table");
           tbl.className="explain";
 
           var keylist=[];
           var valuelist=[];
           
-          //•Ï”v‚Ås”‚ğİ’è‚·‚é
-          for(var v=0;v<game_MUSIC[n].size;v++){
+          //å¤‰æ•°vã§è¡Œæ•°ã‚’è¨­å®šã™ã‚‹
+            for(var v=0;v<array[n].size;v++){
           var tr=document.createElement("tr");
+          //pathã ã‘ã¯ã‚¹ãƒ«ãƒ¼ã—ã¦è¡¨ç¤ºã™ã‚‹
           if(v==1)
           continue;
           
-          //•Ï”u‚ª—ñ”‚Ìw’è
+          //å¤‰æ•°uãŒåˆ—æ•°ã®æŒ‡å®š
           for(var u=0;u<2;u++){            
             var th=document.createElement("th");
             var text;
             var num=0;
 
+            //ä¸€åˆ—ç›®ã®æŒ‡å®š
             if(u==0){
-            game_MUSIC[n].forEach(function(value, key){
+              array[n].forEach(function(value, key){  
+                //pathä»¥å¤–ã®é …ç›®ã‚’ãã‚Œãã‚Œã€keyã¨valueã§ãƒªã‚¹ãƒˆã«åã‚ã¦ã„ã
               if(key!="path"){
                 keylist[num]=key;
                 valuelist[num]=value;
-            //console.log(cons[n].size+"‰ñ’†"+num+"‰ñ–Ú‚Å[" + key + ", " + value + "]");
               }
             num++;
             });
-              //1—ñ–Ú‚Ì€–Úw’è
+              //1åˆ—ç›®ã®é …ç›®æŒ‡å®š
+              //ã‚¿ã‚¤ãƒˆãƒ«è¡¨ç¤ºã®ãŸã‚ã®ifå‡¦ç†
+              if(v==0){
+                //ä¸€åˆ—ç›®(v=0)ã§ã¯2å€‹ã®ã‚»ãƒ«ã‚’çµåˆã™ã‚‹
+                th.colSpan=2;
+                text=document.createTextNode(valuelist[v]);
+                th.appendChild(text);
+                tr.appendChild(th);
+                //ã‚»ãƒ«çµåˆã—ã¦ã„ã‚‹ã®ã§ã€è‡ªåˆ†ã§ãƒ«ãƒ¼ãƒ—ã‚’ã‚³ãƒ³ãƒ†ã‚£ãƒ‹ãƒ¥ãƒ¼ã™ã‚‹
+                u++;
+                continue;
+              }
+              //äºŒåˆ—ç›®ä»¥é™(v=1ä»¥ä¸Š)ã«å¯¾ã™ã‚‹å‡¦ç†
+              
             text=document.createTextNode(keylist[v]);
+            //console.log("key:"+keylist[v])
             }else{
-              //2—ñ–Ú‚Ì€–Úw’è
-            text=document.createTextNode(valuelist[v]);
+              //2åˆ—ç›®ã®é …ç›®æŒ‡å®š
+              if(keylist[v]=="è¨­ç½®å°æ•°"&&isNaN(valuelist[v])==false){
+                text=document.createTextNode(valuelist[v]+"å°");
+              }else{
+                text=document.createTextNode(valuelist[v]);
+              }
+          
+            
             }
             th.appendChild(text);
             tr.appendChild(th);
           }
           tbl.appendChild(tr);
           }
-          //—v‘f”‚ğæ“¾
-          //console.log(Object.values(decide[n]));
-          
-          ele[n].appendChild(tbl);
-
-        }
-      }
-    }
+          return tbl;
   }
 
-  function init(){
-
-    var sec=document.getElementById("sec_article");
+  //æœ€åˆã«èª­ã¿ã“ã¾ã‚Œã‚‹ç”»é¢æ§‹æˆãƒ¡ã‚½ãƒƒãƒ‰
+  window.onload=function init(){
     
-    for(let i=0;i<=game_title.length;i++){
+      /*jsæ—§ã‚³ãƒ¼ãƒ‰
+      var up=document.getElementById("up_direction");
+    up.onclick=function(){
+      scrollTo(0,0);
+    }*/
 
-     var element=document.createElement("div");
-     element.id=game_title[i][1];
+      $(function(){
+
+        $("#up_direction").on("click",function(){scrollTo(0,0);})
+        
+        var sec=$("#sec_article");
+          $.each(game_title,function(index,value){
+        var mu=$("<div id='"+value.get("sub")+"'></div>");
+        mu.appendTo(sec);
+        
+        var lu=$("<div class='LU_menu'></div>");
+        //æ—§ã‚³ãƒ¼ãƒ‰--lu.on("click",star_click(index));
+        lu.on("click",function(){
+          $("#sec_article>div").not("#"+value.get("sub")).remove();
+          var doc=$("#"+value.get("sub"));
+          item_display(value.get("array"),doc);
+        })
+        lu.appendTo(mu);
+
+        var ma=$("<div class='main'>"+value.get("main")+"</div>");
+          ma.appendTo(lu);
+        var su=$("<div class='sub'>"+value.get("sub")+"</div>");
+          su.appendTo(lu);
+        lu.after($("<hr>"));
+        })
+        
+      })
+     /*jsæ—§ã‚³ãƒ¼ãƒ‰
+     //for(let i=0;i<=game_title.length;i++){
+      //var temp_sub=game_title[i].get("sub");
+
+      var element=document.createElement("div");
+     element.id=game_title[i].get("sub");
      sec.appendChild(element);
       
       var element2=document.createElement("div");
       element2.className="LU_menu";
       element2.onclick=function(){
-        var t=game_title[i][1];
-        //star_click(t);
-        star_click2(t);
+        star_click(i);
       }
       element.appendChild(element2);
 
       var main=document.createElement("div");
       main.className="main";
-      main.innerHTML=game_title[i][0];
+      main.innerHTML=game_title[i].get("main");
       element2.appendChild(main);
 
       var sub=document.createElement("div");
       sub.className="sub";
-      sub.innerHTML=game_title[i][1];
+      sub.innerHTML=game_title[i].get("sub");
       element2.appendChild(sub);
 
       var hr=document.createElement("hr")
-      element2.after(hr);   
+      element2.after(hr);   */
+    //}
+    
+    
 
-      
-
-    }
+    /*$(function(){
+      var li;      
+      $.each(menu,function(i,value){
+        li=$("<li><a href='"+value.get("adress")+"'>"+value.get("name")+"</a></li>");
+        if(value.get("sub")=="false"){
+        li.appendTo($("#menu"));
+        }else if(value.get("sub")=="true"){
+          var t_array=value.get("sub_menu");
+          var ul=$("<ul></ul>");
+          $.each(t_array,function(j,val){
+            var s_li=$("<li><a href='"+val.get("adress")+"'>"+val.get("name")+"</a></li>");
+            s_li.appendTo(ul);
+          })
+          ul.appendTo(li);
+          li.appendTo($("#menu"));
+        }else{
+          console.log("ng");
+        }
+      })
+    })*/
   }
-
   
-
-   //‚±‚Ìƒƒ\ƒbƒh‚Íƒy[ƒW‚ğÄ“Ç‚İ‚İ‚·‚é‚½‚ß‚Ì‚à‚Ì
+   //ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ãƒšãƒ¼ã‚¸ã‚’å†èª­ã¿è¾¼ã¿ã™ã‚‹ãŸã‚ã®ã‚‚ã®
  function reload_back(){
   location.reload();
  }
-
 
 </script>
 
 </head>
 
-<!--body‚ªƒ[ƒh‚³‚ê‚½‚Æ‚«‚Éinit‚ª“Ç‚İ‚Ü‚ê‚é-->
-<body onload="init()">
+<!--bodyãŒãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã¨ãã«initãŒèª­ã¿è¾¼ã¾ã‚Œã‚‹-->
+<!--<body onload="init()">-->
+
+<body>
+<script src="menu.js"></script>
  <nav>
 <ul id="menu">
-  <li><a href="index.html">TOP</a></li>
-   
-  <li><a href="STARDUST.ACCESS.html">ACCESS</a></li>
-
-  <li><a href="#">GAMES</a>
-    <ul>
-      <li><a href="STARDUST.NEW.html">SCHEDULE</a></li>
-      <li><a href="#">LINE UP</a></li>
-      <li><a href="#">CONTACT</a></li>
-    </ul>
-  </li>
-
-  <li><a href="#">PRIZE</a>
-    <ul>
-      <li><a href="STARDUST.SCHEDULE.html">SCHEDULE</a></li>
-      <li><a href="STARDUST.WHAT.html">WHAT'S NEW !</a></li>
-    </ul>
-  </li>
-
-  <li><a href="https://twitter.com/stardust_am">TWITTER</a></li>
 </ul>
 </nav>
 
 <div class="headline" onclick="reload_back()">
-  <div class="main">ƒ‰ƒCƒ“ƒiƒbƒv</div>
+  <div class="main">ãƒ©ã‚¤ãƒ³ãƒŠãƒƒãƒ—</div>
   <div class="sub">LINE UP</div>
 </div>
-<!--‚±‚Ìtemp1‚Í—v‘f‚ğ‘}“ü‚·‚é‚½‚ß‚Ì–Úˆó-->
+<!--ã“ã®temp1ã¯è¦ç´ ã‚’æŒ¿å…¥ã™ã‚‹ãŸã‚ã®ç›®å°-->
 <div id="temp1">
 <hr>
 </div>
 
-
-
+<div id="up_direction">â†‘</div>
 
 <div id="sec_article">
 
 <!--
-  ‹Œ—Œ`ƒfƒUƒCƒ“‚ÌƒR[ƒh
+  æ—§é››å½¢ãƒ‡ã‚¶ã‚¤ãƒ³ã®ã‚³ãƒ¼ãƒ‰
   <h1><a href="STARDUST.MUSIC.html"><img src="music.png"></a></h1>
  <a href="STARDUST.MUSIC.html">
  <div id="headline">
-  <div id="main">‰¹ƒQ[</div>
+  <div id="main">éŸ³ã‚²ãƒ¼</div>
   <div id="sub">MUSIC</div>
 </div>
 </a>
 <hr>-->
 
 <!--
-  ‹ŒƒR[ƒh
+  æ—§ã‚³ãƒ¼ãƒ‰
 <div id="action" onclick="star_click(this)">
   <div class="LU_menu">
-   <div class="main">ƒAƒNƒVƒ‡ƒ“</div>
+   <div class="main">ã‚¢ã‚¯ã‚·ãƒ§ãƒ³</div>
    <div class="sub">ACTION</div>
  </div>
  <hr>
@@ -276,7 +400,7 @@ function star_click(divid){
 <!--
 <div id="MUSIC">
     <div class="LU_menu" onclick="star_click(this.parentElement.id)">
-     <div class="main">‰¹ƒQ[</div>
+     <div class="main">éŸ³ã‚²ãƒ¼</div>
      <div class="sub">MUSIC</div>
    </div>
    <hr>
@@ -284,7 +408,7 @@ function star_click(divid){
 
 <div id="ACTION">
   <div class="LU_menu" onclick="star_click(this.parentElement.id)">
-   <div class="main">ƒAƒNƒVƒ‡ƒ“</div>
+   <div class="main">ã‚¢ã‚¯ã‚·ãƒ§ãƒ³</div>
    <div class="sub">ACTION</div>
  </div>
  <hr>
@@ -292,7 +416,7 @@ function star_click(divid){
 
  <div id="FIGHTING">
   <div class="LU_menu" onclick="star_click(this.parentElement.id)">
-   <div class="main">ŠiƒQ[</div>
+   <div class="main">æ ¼ã‚²ãƒ¼</div>
    <div class="sub">FIGHTING</div>
  </div>
  <hr>
@@ -300,7 +424,7 @@ function star_click(divid){
 
 <div id="MAH=JONGG">
   <div class="LU_menu" onclick="star_click(this.parentElement.id)">
-   <div class="main">–ƒ</div>
+   <div class="main">éº»é›€</div>
    <div class="sub">MAH=JONGG</div>
  </div>
  <hr>
@@ -308,7 +432,7 @@ function star_click(divid){
 
 <div id="TCG">
   <div class="LU_menu" onclick="star_click(this.parentElement.id)">
-   <div class="main">ƒJ[ƒhƒQ[ƒ€</div>
+   <div class="main">ã‚«ãƒ¼ãƒ‰ã‚²ãƒ¼ãƒ </div>
    <div class="sub">TCG</div>
  </div>
  <hr>
@@ -316,7 +440,7 @@ function star_click(divid){
 
 <div id="ETC">
   <div class="LU_menu" onclick="star_click(this.parentElement.id)">
-   <div class="main">‚»‚Ì‘¼</div>
+   <div class="main">ãã®ä»–</div>
    <div class="sub">ETC</div>
  </div>
  <hr>

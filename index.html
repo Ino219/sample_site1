@@ -8,12 +8,71 @@
 <meta name="discription" content="岡山駅前のゲームセンター"STAR DUST(スターダスト)のホームページ>
 <title>岡山駅前のゲームセンター"STAR DUST(スターダスト)"</title>
 <link rel="stylesheet" href="STARDUST.TOP.css" type="text/css">
+<script
+  src="https://code.jquery.com/jquery-3.6.1.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+  var news_list=["sample2.png","sample3.png","sample4.png"];
+
+  
+
+  window.onload=function(){
+    $(function(){
+      $.each(news_list,function(index,value){
+        $("#news"+index).attr("src",value).on("click",function(){
+          $("#pop").attr("src",value);
+          $("#pop_wrap").css("display","block").on("click",function(){
+            $("#pop_wrap").css("display","none");
+          })
+        });
+      })
+    })
+    /*js旧コード
+    var news0=document.getElementById("news0");
+    news0.setAttribute("src",news_list[0]);
+    var news1=document.getElementById("news1");
+    news1.setAttribute("src",news_list[1]);
+    var news2=document.getElementById("news2");
+    news2.setAttribute("src",news_list[2]);
+    var wrap=document.getElementById("pop_wrap");
+    var pop=document.getElementById("pop");
+    var temp_img;
+  news0.onclick=function(){
+    temp_img=news0.getAttribute("src");
+    pop.setAttribute("src",temp_img);
+    wrap.style.display="block";
+    wrap.onclick=function(){
+      wrap.style.display="none";
+    }
+  }
+  news1.onclick=function(){
+    temp_img=news1.getAttribute("src");
+    pop.setAttribute("src",temp_img);
+    wrap.style.display="block";
+    wrap.onclick=function(){
+      wrap.style.display="none";
+    }
+  }
+  news2.onclick=function(){
+    temp_img=news2.getAttribute("src");
+    pop.setAttribute("src",temp_img);
+    wrap.style.display="block";
+    wrap.onclick=function(){
+      wrap.style.display="none";
+    }
+  }*/
+}
+
+</script>
 </head>
 
 <body>
+  <script src="menu.js"></script>
  <nav>
 <ul id="menu">
-  <li><a href="#">TOP</a></li>
+  <!--メニューの旧コード
+    <li><a href="#">TOP</a></li>
    
   <li><a href="STARDUST.ACCESS.html">ACCESS</a></li>
 
@@ -32,14 +91,28 @@
     </ul>
   </li>
 
-  <li><a href="https://twitter.com/stardust_am">TWITTER</a></li>
+  <li><a href="https://twitter.com/stardust_am">TWITTER</a></li>-->
 </ul>
 </nav>
 
 <header>
 <img src="title.png">
 </header>
+<div id="pop_wrap">
+  <img id="pop">
+</div>
  <article>
+  <div id="h_news">
+    <hr>
+    - NEWS -
+    <hr>
+    <div id="news">
+    <img id="news0">
+    <img id="news1">
+    <img id="news2">
+    </div>
+    <hr>
+  </div>
 <div id="box1">
 
 -御挨拶-
@@ -54,6 +127,9 @@
 岡山県岡山市北区駅前町1-7
 STAR DUST
 TEL:086-226-4998
+
+定休日:年中無休
+営業時間:9:00~0:00
 
 </div>
 </article>

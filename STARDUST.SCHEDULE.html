@@ -8,9 +8,14 @@
 <meta name="discription" content="岡山駅前のゲームセンター"STAR DUST(スターダスト)のホームページ>
 <title>岡山駅前のゲームセンター"STAR DUST(スターダスト)"</title>
 <link rel="stylesheet" href="STARDUST.TOP.css" type="text/css">
+<script
+  src="https://code.jquery.com/jquery-3.6.1.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"></script>
 <script type="text/javascript">
   var month_temp;
   const months = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+  var img_li=["sample_nyuka.png","sample2.png"];
   
   //月名表示のための関数
   function calc_month(month){
@@ -23,34 +28,95 @@
     var m2=document.getElementById("e_month");
     m2.insertAdjacentHTML("afterend",month_name);
   }
-  
+
+  window.onload=function init(){
+    $(function(){
+    $("#main_img").attr("src",img_li[0]);
+    $("#first").attr("src",img_li[0]).css("cursor","default");
+    /*js旧コード
+    .on("click",function(){
+      if($("#main_img").attr("src")==img_li[0]){
+        console.log("既に押下されています");
+      }else{        
+        $("#main_img").attr("src",img_li[0]);
+        $("#first").css("cursor","default");
+        $("#second").css("cursor","pointer");
+      }
+    });*/
+    $("#second").attr("src",img_li[1]);
+    /*js旧コード
+    .on("click",function(){
+      if($("#main_img").attr("src")==img_li[1]){
+        console.log("既に押下されています");
+      }else{
+        $("#main_img").attr("src",img_li[1]);
+        $("#first").css("cursor","pointer");
+        $("#second").css("cursor","default");
+      }
+    }
+    );*/
+    })
+
+    $(function(){
+      $("#sub_space>img").on("click",function(){
+        $("#sub_space>img").not($(this)).css("cursor","pointer");
+        $(this).css("cursor","default");
+        var src=$(this).attr("src");
+        //$("#main_img").slideUp("slow")
+        $("#main_img").attr("src",src).css("width","10%").animate({"width":"90%"});
+        //$("#main_img").slideDown("slow");
+      })
+    })
+    
+    /*var main_s=document.getElementById("main_img");
+    var sub_1=document.getElementById("first");
+    var sub_2=document.getElementById("second");
+    main_s.setAttribute("src",img_li[0]);
+    sub_1.setAttribute("src",img_li[0]);
+    sub_1.style.cursor="default";
+    sub_2.setAttribute("src",img_li[1]);
+    sub_1.onclick=function(){
+      click1();
+    }
+    sub_2.onclick=function(){
+      click2();
+    }*/
+  }
+
+  //secondを押下したときの処理
+  /*function click2(){
+  var main=document.getElementById("main_img");
+  var first=document.getElementById("first");
+  var second=document.getElementById("second");
+
+  if(main.getAttribute("src")==img_li[1]){
+    console.log("既に押下されています");
+  }else{
+  main.setAttribute("src",img_li[1]);
+  first.style.cursor="pointer";
+  second.style.cursor="default";}
+  }*/
+
+  //firstを押したときの処理
+  /*function click1(){
+  var main=document.getElementById("main_img");
+  var first=document.getElementById("first");
+  var second=document.getElementById("second");
+  if(main.getAttribute("src")==img_li[0]){
+    console.log("既に押下されています");
+  }else{
+  main.setAttribute("src",img_li[0]);
+  second.style.cursor="pointer";
+  first.style.cursor="default";}
+  }*/
   
 </script>
 </head>
 
 <body>
+  <script src="menu.js"></script>
  <nav>
 <ul id="menu">
-  <li><a href="index.html">TOP</a></li>
-   
-  <li><a href="STARDUST.ACCESS.html">ACCESS</a></li>
-
-  <li><a href="#">GAMES</a>
-    <ul>
-      <li><a href="STARDUST.NEW.html">SCHEDULE</a></li>
-      <li><a href="STARDUST.LINEUP.html">LINE UP</a></li>
-      <li><a href="#">CONTACT</a></li>
-    </ul>
-  </li>
-
-  <li><a href="#">PRIZE</a>
-    <ul>
-      <li><a href="STARDUST.SCHEDULE.html">SCHEDULE</a></li>
-      <li><a href="STARDUST.WHAT.html">WHAT'S NEW !</a></li>
-    </ul>
-  </li>
-
-  <li><a href="https://twitter.com/stardust_am">TWITTER</a></li>
 </ul>
 </nav>
 
@@ -80,9 +146,13 @@
 <hr>
 
 <article>
-<img src="sample_nyuka.png">
-</article>
-
-<article>
-<img src="sample_nyuka.png">
+<div id="article_wrap">
+  <div id="main_space">
+    <img id="main_img">
+  </div>
+  <div id="sub_space">
+    <img id="first">
+    <img id="second">
+  </div>
+</div>
 </article>

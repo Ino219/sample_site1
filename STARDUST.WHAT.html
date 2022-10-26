@@ -3,41 +3,175 @@
 <html lang="ja">
 
 <head>
-<meta charset="shift_jis">
-<meta name="keywords" content="���R,�w�O,�Q�[���Z���^�[,�Q�[�Z��,�_�X�g,�X�^�[�_�X�g">
-<meta name="discription" content="���R�w�O�̃Q�[���Z���^�["STAR DUST(�X�^�[�_�X�g)�̃z�[���y�[�W>
-<title>���R�w�O�̃Q�[���Z���^�["STAR DUST(�X�^�[�_�X�g)"</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="岡山,駅前,ゲームセンター,ゲーセン,ダスト,スターダスト">
+<meta name="discription" content="岡山駅前のゲームセンター"STAR DUST(スターダスト)のホームページ>
+<title>岡山駅前のゲームセンター"STAR DUST(スターダスト)"</title>
 <link rel="stylesheet" href="STARDUST.TOP.css" type="text/css">
+<script
+  src="https://code.jquery.com/jquery-3.6.1.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+  //画像を収めた配列
+  var array_pict=["sample2.png","sample3.png","sample4.png","sample5.png"];
+  //現在、表示している画像の配列の添え字であり、ボタンギミックの現在位置を示す
+  var flag=0;
+  var img;
+
+  function first_display(){
+    //var disp_slide=document.getElementById("disp_slide");
+    var img=document.getElementById("main");
+    $(function(){
+      //var img=$("#disp_slide img#main");
+      //デフォルトで表示される画像の指定。この場合、flagは0なので、array_pictの一番目の画像となる
+      $("#disp_slide img#main").attr("src",array_pict[flag]);
+      //戻る矢印と進む矢印の定義
+      $("#disp_slide").append(skip(img,"back",flag));
+      $("#disp_slide").append(skip(img,"next",flag));
+    });
+
+    //矢印の旧ヴァージョン
+    //disp_slide.appendChild(skip(img,"next",flag));
+  }
+
+  
+  //引数のimgのsrcがarray_pict配列の何番目にあたるかを調べるメソッド。一致すればその添え字を、一致しなければ0を返す
+  function checked_img(){
+    var img=document.getElementById("main");
+    //相対パスでsrcの内容を取得するためにgetAttributeを使用
+    var src=img.getAttribute("src");
+    return array_pict.indexOf(src);
+  }
+  
+  //numに1を加算するメソッド。配列の長さを超えていれば、0に戻す
+  function add_flag(num){
+    num=num+1;
+    if(num>=array_pict.length)
+      return 0;
+    return num;
+  }
+
+  //numから1を減算するメソッド。0未満となると、配列の最後尾に戻す
+  function sub_flag(num){
+    num=num-1;
+    if(num<0)
+      return array_pict.length-1;
+    return num;
+  }
+  
+  //戻る、進むボタンの形成。directionはbackかnext
+  function skip(img,direction,flag){
+    //f_numは現在、表示されている画像の配列の添え字
+    //var f_num=checked_img();
+    var back="back";
+    var next="next";
+    var key;
+    var sym;
+    //directionに応じて、リンクに入れる添え字を処理
+    if(direction==back){
+      //flagの数値を引き算メソッドで処理
+      flag=sub_flag(flag);
+      key=back;
+      sym="<";
+    }else if(direction==next){
+      //flagの数値を足し算メソッドで処理
+      flag=add_flag(flag);
+      key=next;
+      sym=">";
+    }else{
+      //directionの指定が間違っていた場合はコンソールでエラーを返す
+      console.log("error");
+    }
+    //var s_skip=document.getElementById(key);
+    var s_skip=document.createElement("div");
+    s_skip.id=key;
+    //ボタン内のテキストを指定
+    s_skip.insertAdjacentHTML("afterbegin",sym);
+    //クリックイベントを定義
+    s_skip.onclick=function(){
+      //imgの中身を差し替える
+      img.src=array_pict[flag];
+      //戻る、進むボタンの書き換えメソッド
+      rewrite(img,flag);
+      //画像の遷移にあわせて、ボタンギミックも更新する
+      var button=document.getElementById("a"+flag);
+      button.checked=true;
+    };
+    return s_skip;
+  }
+
+  //戻るボタンと進むボタンを書き換えるメソッド
+  function rewrite(img,flag){
+    var back=document.getElementById("back");
+    var next=document.getElementById("next");
+    back.onclick=function(){
+      flag=sub_flag(flag);
+      img.src=array_pict[flag];
+      var button=document.getElementById("a"+flag);
+      button.checked=true;
+    }
+    next.onclick=function(){
+      flag=add_flag(checked_img());
+      img.src=array_pict[flag];
+      var button=document.getElementById("a"+flag);
+      button.checked=true;
+    }
+  }
+
+  
+
+  //最初に画面が表示されるときに読みこまれる関数
+  window.onload=function init(){
+    first_display();
+    create_btn(flag);  
+  }
+
+  function create_btn(flag){
+    var s_btn=document.getElementById("select_btn");
+  for(var i=0;i<array_pict.length;i++){
+  //inputの要素を作成  
+  var btn=document.createElement("input");
+
+  if(i==0)
+  btn.checked=true;
+  
+  //CSSでデザイン管理するためのクラス定義
+  btn.className="display_btn";
+  //idとlabelのforを同一にすることで、リンクするようになる
+  btn.id="a"+i;
+  btn.type="radio";
+  //name要素を同一にすることで、排他的選択が可能になる
+  btn.name="display";
+  btn.onclick=function(){
+    flag=this.id.substr(1,1);
+    var img_temp=document.getElementById("main");
+    img_temp.src=array_pict[flag];
+      rewrite(img_temp,flag);
+  }
+  s_btn.appendChild(btn);
+
+  //labelの要素を作成
+  var label=document.createElement("label");
+  //labelのfor要素はボタンのidと同じにする
+  label.htmlFor="a"+i; 
+  s_btn.appendChild(label);
+  }
+  }
+
+</script>
+
 </head>
 
 <body>
+  <script src="menu.js"></script>
  <nav>
 <ul id="menu">
-  <li><a href="index.html">TOP</a></li>
-   
-  <li><a href="STARDUST.ACCESS.html">ACCESS</a></li>
-
-  <li><a href="#">GAMES</a>
-    <ul>
-      <li><a href="STARDUST.NEW.html">SCHEDULE</a></li>
-      <li><a href="STARDUST.LINEUP.html">LINE UP</a></li>
-      <li><a href="#">CONTACT</a></li>
-    </ul>
-  </li>
-
-  <li><a href="#">PRIZE</a>
-    <ul>
-      <li><a href="STARDUST.SCHEDULE.html">SCHEDULE</a></li>
-      <li><a href="#">WHAT'S NEW !</a></li>
-    </ul>
-  </li>
-
-  <li><a href="https://twitter.com/stardust_am">TWITTER</a></li>
 </ul>
 </nav>
 
 <div class="headline">
-  <div class="main">�V�����</div>
+  <div class="main">新着情報</div>
   <div class="sub">WHAT'S NEW</div>
 </div>
 <hr>
@@ -47,5 +181,13 @@
 </header>
 
 <article>
-<img src="ready.png">
+  <div id="display">
+    <div id="disp_slide">
+      <!--<div id="back">-->
+      <img id="main">
+      <!--<div id="next">-->
+    </div>
+  <div id="select_btn">
+  </div>
+  </div>
 </article>

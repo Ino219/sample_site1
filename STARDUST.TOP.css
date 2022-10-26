@@ -5,6 +5,24 @@ body {
     /*背景に画像ファイルを指定して、画面サイズにあわせて伸縮する*/
     background: #fff url("bg-001.png") center center / cover no-repeat fixed;
 }
+#pop_wrap{
+  position: fixed;
+  background-color:rgba( 40, 40, 50, 0.55 );
+  display: none;
+  inset:0;
+  margin:auto;
+  width: 80%;
+  height: 80%;
+}
+#pop_wrap img#pop{
+  /*position: absolute;*/
+  display:block;
+  max-width: 100%;
+  max-height: 100%;
+  inset:0;
+  margin:auto;
+  
+}
 /*画面上部のメニュー帯*/
 nav {
     padding: 0; 
@@ -81,6 +99,7 @@ div.headline{
   color: #f5f5f5;
   background-color: rgba( 20, 20, 50, 0.55 );
   border-top: double gray 10px;
+  cursor: pointer;
 }
 /*見出しのメイン表示*/
 div.main{
@@ -140,10 +159,216 @@ article {
     margin: 10%;
     background-color: rgba( 20, 20, 50, 0.55 );
 }
+#article_wrap{
+  display: flex;
+  /*background-color: #00f;*/
+}
+#main_space{
+  display:inline-block;
+  /*background-color: aqua;*/
+  width:70%;
+}
+#sub_space{
+  display:inline-block;
+  /*background-color: blueviolet;*/
+  width:30%;
+  margin:auto 0%;
+  cursor:pointer;
+}
+#h_news{
+  font-size: 40px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+#news{
+  display: flex;
+}
+#news img{
+  width:20%;
+  height:20%;
+  margin:0% auto;
+}
 /*ACCESSのstardustの店舗画像*/
 article img{
    width: 90%;
-   margin: 5%;
+   margin:5%;
+}
+/*GAMESのSCHEDULEの画像*/
+img#arrival{
+  width: 70%;
+  margin:10%;
+}
+#thumb_list{
+  display: flex;
+  padding-left:5%;
+}
+#thumb_list img{
+  width: 15%;
+  height:15%;
+}
+#thumb_list #b_btn{
+  width: 10%;
+  height:10%;
+  background-color: rgba( 20, 20, 50, 0.55 );
+  color: black;
+  margin:auto 0%;
+  padding:5% 0%;
+  font-size:30px;
+  border:double black;
+}
+#thumb_list #n_btn{
+  width: 10%;
+  height:10%;
+  background-color: rgba( 20, 20, 50, 0.55 );
+  color: #fff;
+  margin:auto 0%;
+  padding:5% 0%;
+  font-size:30px;
+  border:double white;
+  cursor:pointer;
+}
+
+#select_btn{
+  background-color: rgba( 20, 20, 50, 0.55 );
+  width:300px;
+  height:50px;
+  margin:0% auto;
+  border-radius: 15pt;
+}
+/*
+#select_btn{
+  background-color: aqua;
+  width:30%;
+  height:10%;
+  margin:0% 35%;
+  border-radius: 15pt;
+}
+*/
+/*inputタグでいじれるのは、大きさやマージンのみなので、表示しない設定にする*/
+.display_btn{
+  display: none;
+}
+/*labelはinputに隣接させて、inputの位置をpaddingで空けておく*/
+label{
+  position: relative;
+  padding-left: 25px;
+  margin:5%;
+  padding-top: 10px;
+}
+/*inputとlabelが隣接しているので、+でまとめて扱うことが出来る。::beforeは選択前の状態を定義*/
+.display_btn+label::before{
+  position: absolute;
+  content: '';
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #fff;
+  border: 0px solid #ddd;
+  left: 5px;
+  top: 5px;
+}
+/*こちらは選択前の状態を定義し、opacityを0に設定することで透明化しておく*/
+.display_btn+label::after{
+  position: absolute;
+  content: '';
+  display: block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #fff;
+  left: 0px;
+  top: 0px;
+  opacity: 0;
+  transition: .3s;
+}
+/*ボタンにチェックが入ったときにopacityを1にして、上記設定を可視化する*/
+.display_btn:checked+label::after{
+  opacity: 1;
+}
+#disp_slide{
+  display: -webkit-box;
+  display: -moz-box;
+  position: relative;
+  /*親要素でblockを指定し、子要素でinline-blockを指定することで、横並びのレイアウトを実現する。*/
+  display: block;
+  width: 100%;
+}
+/*
+.skip{
+  display: inline-block;
+  /*innerHTMLなどで要素に内容を入れたとき、relativeではレイアウトが崩れたので、親要素にrelative、子要素にabsoluteを指定*/
+  /*position: absolute;
+  background-color: rgba( 20, 20, 50, 0.55 );
+  /*width: 10%;*/
+  /*width: 50px;
+  margin:40% -5%;
+  height:50px;
+  border-radius: 30%;
+  z-index: 2;
+  font-size: 40px;
+  padding-top: 20px;
+  cursor:pointer;
+}*/
+#back{
+  display: inline-block;
+  position: absolute;
+  background-color: rgba( 20, 20, 50, 0.55 );
+  width: 50px;
+  height:50px;
+  border-radius: 30%;
+  z-index: 2;
+  font-size: 40px;
+  cursor:pointer;
+  top:45%;
+  left:0%;
+}
+#next{
+  display: inline-block;
+  position: absolute;
+  background-color: rgba( 20, 20, 50, 0.55 );
+  width: 50px;
+  height:50px;
+  border-radius: 30%;
+  z-index: 2;
+  font-size: 40px;
+  cursor:pointer;
+  top:45%;
+  right:0%;
+}
+/*skip_rやlは現時点では使用していないが、不具合があれば、skipの代わりのデザインとして使用*/
+#skip_r{
+  /*親要素でblockを指定し、子要素でinline-blockを指定することで、横並びのレイアウトを実現する。*/
+  display: inline-block;
+  /*z-indexを使うときはpositionの指定が必須。*/
+  position: relative;
+  background-color: #00f;
+  width: 10%;
+  margin:45% 0% 45% -5%;
+  height:100px;
+  /*z-indexでレイヤを指定。数字が大きいほど手前に位置する。*/
+  z-index: 2;
+}
+#skip_l{
+ /*親要素でblockを指定し、子要素でinline-blockを指定することで、横並びのレイアウトを実現する。*/ 
+  display: inline-block;
+  /*z-indexを使うときはpositionの指定が必須。absoluteやfixではレイアウトが崩れるので、relativeを指定*/
+  position: absolute;
+  background-color: #00f;
+  width: 10%;
+  margin:45% -5% 45% 0%;
+  height:100px;
+  /*z-indexでレイヤを指定。数字が大きいほど手前に位置する。*/
+  z-index: 2;
+}
+#disp_slide img#main {
+  /*親要素でblockを指定し、子要素でinline-blockを指定することで、横並びのレイアウトを実現する。*/
+  display: inline-block;
+  /*z-indexを使うときはpositionの指定が必須。absoluteやfixではレイアウトが崩れるので、relativeを指定*/
+  position: relative;
+  width:80%;
+  margin:0%;
+  /*z-indexでレイヤを指定。数字が大きいほど手前に位置する。*/
+  z-index: 1;
 }
 /*記事を囲う四角の枠線のデザイン*/
 #box1{
@@ -171,6 +396,22 @@ img.title{
   text-align: center;
 }
 
+#up_direction{
+  position:fixed;
+  width:100px;
+  height:100px;
+  right:2%;
+  bottom:5%;
+  /*background-color: rgba( 20, 20, 50, 0.55 );*/
+  background-color: rgba( 40, 40, 50, 0.55 );
+  color:#fff;
+  border:solid rgba( 60, 60, 70, 0.55 );
+  text-align: center;
+  line-height: 100px;
+  font-size: 50px;
+  cursor:pointer;
+}
+
 div.introduce-1 {
   text-align: center;
   width: 80%;
@@ -189,6 +430,8 @@ table.explain {
   border-top: solid 1px #FFFFFF;
   border-left: solid 1px #FFFFFF;
   color: #FFF;
+  border:double #FFFFFF;
+  background-color:rgba( 40, 40, 50, 0.55 ) ;
 }
 
 table.explain colgroup.machine1 {
@@ -205,6 +448,8 @@ table.explain tr th{
   border-right: solid 1px #FFFFFF;
   border-bottom: solid 1px #FFFFFF;
   border-collapse: separate;
+  /*改行記号で改行できるようにするための設定*/
+  white-space: pre-wrap;
 }
 /*グーグルマップのデザインスタイル*/
 div.ggmap {

@@ -8,49 +8,132 @@
 <meta name="discription" content="岡山駅前のゲームセンター"STAR DUST(スターダスト)のホームページ>
 <title>岡山駅前のゲームセンター"STAR DUST(スターダスト)"</title>
 <link rel="stylesheet" href="STARDUST.TOP.css" type="text/css">
+<script
+  src="https://code.jquery.com/jquery-3.6.1.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"></script>
 <script type="text/javascript">
-  var month_temp;
+
   const months = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+  var image_list=["sample_nyuka.png","sample2.png","sample3.png","sample4.png","sample5.png"];
+  var start=0;
   
+  //js旧コード
   //月名表示のための関数
-  function calc_month(month){
+  //この関数の引数に月を指定する
+  /*function calc_m(month){
     var m1=document.getElementById("month");
     m1.insertAdjacentHTML("afterend",month+"月");
-    month_temp=month
-  }
-  function calc_e(){
-    var month_name=months[month_temp-1];
     var m2=document.getElementById("e_month");
-    m2.insertAdjacentHTML("afterend",month_name);
+    m2.insertAdjacentHTML("afterend",months[month-1]);
+  }*/
+
+  window.onload=function init(){
+    $(function(){
+      //月名表示のための関数
+      //この変数に月を指定する
+      var month=12;
+      $("#month").after(month+"月");
+      $("#e_month").after(months[month-1]);
+
+      var thumb=$("#thumb_list");
+      display_img(0);
+    })
   }
-  
-  
+
+  //image_listの配列に収まっている画像の中から、startの添え字位置から三つ分の画像を表示するメソッド
+  function display_img(start){
+    var img;
+    var soeji=0;
+    $(function(){
+      $("#img0").hide("slow");
+      $("#img1").hide("slow");
+      $("#img2").hide("slow");
+      $.each(image_list,function(index,value){
+        if(index>=start && index<start+3){
+        img=$("#img"+soeji);
+        img.show("slow");
+        img.attr("src",value);
+        //ここでonclickを設定すると、二重に読みこまれたりするので、クリックイベントは他で付与
+        //img.on("click",function(){
+          //$("#arrival").hide("slow");
+          //$("#arrival").attr("src",value);
+          //$("#arrival").show("slow");
+          //console.log(start+":"+index);
+        //})
+        soeji++;
+      }else{
+        return true;
+      }
+      })
+    })
+  }
+
+  //クリックしたサムネイルの画像をarrivalに表示するシンプルな処理
+  $(function(){
+    $("#thumb_list>img").on("click",function(){
+      $("#arrival").hide("high");
+      var src=$(this).attr("src");
+      //$("#arrival").attr("src",src);
+      //処理の実行を送らせて、hide処理を優先させることで、hideの前に画像が切り替わることはなくなる
+      setTimeout(function(){$("#arrival").attr("src",src)},500);
+      $("#arrival").show("slow");
+    })
+  })
+
+  $(function(){
+  var n_bt=$("#n_btn");
+  var b_bt=$("#b_btn");
+
+  n_bt.on("click",function(){
+    b_bt.css("color","white");
+    b_bt.css("border","double white");
+    b_bt.css("cursor","pointer");
+    if(start<image_list.length-3){
+      //start++;
+      start+=3;
+      display_img(start);
+      if(start>=image_list.length-3){
+        n_bt.css("color","black");
+        n_bt.css("border","double black");
+        n_bt.css("cursor","auto");
+      }
+    }else{
+      console.log("これ以上先に画像はありません");
+    }
+  })
+
+  $("#b_btn").on("click",function(){
+    if(start==0){
+      console.log("これ以上前に画像はありません");
+    }else{
+      if(start>=image_list.length-3){
+        n_bt.css("color","white");
+        n_bt.css("border","double white");
+        n_bt.css("cursor","pointer");
+      }
+      start-=3;
+      display_img(start);
+      if(start==0){
+        b_bt.css("color","black");
+        b_bt.css("border","double black");
+        b_bt.css("cursor","auto")
+      }
+      
+    }
+  })
+
+
+
+  })
+
 </script>
 </head>
 
 <body>
+<script src="menu.js"></script>
  <nav>
 <ul id="menu">
-  <li><a href="index.html">TOP</a></li>
-   
-  <li><a href="STARDUST.ACCESS.html">ACCESS</a></li>
-
-  <li><a href="#">GAMES</a>
-    <ul>
-      <li><a href="STARDUST.NEW.html">SCHEDULE</a></li>
-      <li><a href="STARDUST.LINEUP.html">LINE UP</a></li>
-      <li><a href="#">CONTACT</a></li>
-    </ul>
-  </li>
-
-  <li><a href="#">PRIZE</a>
-    <ul>
-      <li><a href="STARDUST.SCHEDULE.html">SCHEDULE</a></li>
-      <li><a href="STARDUST.WHAT.html">WHAT'S NEW !</a></li>
-    </ul>
-  </li>
-
-  <li><a href="https://twitter.com/stardust_am">TWITTER</a></li>
 </ul>
 </nav>
 
@@ -63,22 +146,22 @@
 <div class="headline">
   <div class="main">
     <div id="month">
-    <script>
-      //この関数の引数に月を指定する
-      calc_month(12);
-      </script>
     </div>
   </div>
   <div class="sub">
     <div id="e_month">
-      <script>
-        calc_e();
-      </script>
     </div>
   </div>
 </div>
 <hr>
 
 <article>
-<img src="sample_nyuka.png">
+  <img src="sample_nyuka.png" id="arrival">
+<div id="thumb_list">
+  <div id="b_btn"><</div>
+  <img id="img0">
+  <img id="img1">
+  <img id="img2">
+  <div id="n_btn">></div>
+</div>
 </article>
